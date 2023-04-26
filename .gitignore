@@ -1,0 +1,10 @@
+dart-sass/
+node_modules/
+gems_lib/
+notes.txt
+*.code-workspace
+.jekyll-cache
+build/
+images_src/
+src-jekyll/assets/js/
+test/

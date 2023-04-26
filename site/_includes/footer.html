@@ -1,0 +1,7 @@
+<div id="footer-wrapper" dir="ltr">
+{%- for footer_item in site.data.footer -%}
+    <a href="{{ footer_item.link }}" >
+        <img id="{{ footer_item.id }}" class="footer-profile-icons" src="{{ footer_item.src | relative_url }}" >
+    </a>
+{%- endfor -%}
+</div>

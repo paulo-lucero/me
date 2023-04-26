@@ -1,0 +1,38 @@
+---
+layout: default
+title: Portfolio
+---
+<div id="projects-main" dir="ltr">
+    {% for project_category in site.categories %}
+        <div class="projects-category" dir="ltr">
+            <div class="projects-category-name" >{{ project_category[0] }}</div>
+            <div class="projects-category-list" dir="ltr" >
+                {% for project in project_category[1] %}
+                    {% assign project_image = project.image %}
+                    {% assign project_label = project.label %}
+
+                    {% assign item_class = "image-type" %}
+                    {% unless project_image %}
+                      {% assign item_class = "text-type" %}
+                    {% endunless %}
+
+                    <div class="{{ "projects-category-item " | append: item_class }}" dir="ltr" >
+                        {% if project_image %}
+                            <a class="projects-category-preview" href="{{ project.url | relative_url }}">
+                                <img class="projects-category-image" src="{{ project_image | relative_url }}" >
+                            </a>
+                        {% endif %}
+                        <div class="projects-category-description" dir="ltr" >
+                            {% if project_label %}
+                                <span class="projects-category-label" >{{ project_label }}</span>
+                            {% endif %}
+                            <span class="projects-category-short">{{ project.short_description }}</span>
+                            <span class="projects-category-tech" >{{ project.technologies | join: ", " }}</span>
+                            <a class="projects-category-more" href="{{ project.url | relative_url }}">Read more</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>

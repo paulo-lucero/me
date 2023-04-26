@@ -1,0 +1,6 @@
+- id: github-profile-icon
+  src: /assets/images/footer/github-mark-white.svg
+  link: https://github.com/paulo-lucero
+- id: linkedin-profile-icon
+  src: /assets/images/footer/linkedin-icon.svg
+  link: https://www.linkedin.com/in/paulo-lucero/

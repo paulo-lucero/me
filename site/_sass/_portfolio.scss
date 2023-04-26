@@ -1,0 +1,204 @@
+@use "base";
+@use "sass:math";
+
+@mixin projects-category-more {
+    .projects-category-more {
+        @include base.paragraph-200-bold;
+        text-decoration: none;
+    }
+}
+
+@mixin projects-category-summary-style($line-height) {
+    $max-line-no: 2;
+    $max-height: $line-height * $max-line-no;
+
+    position: relative;
+    max-height: $max-height;
+    overflow: hidden;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: $line-height;
+        right: 0;
+        width: 50%;
+        height: $line-height;
+        background: linear-gradient(
+            to right,
+            rgba(base.$surface-color-5, 0),
+            rgba(base.$surface-color-5, 1) 80%
+        );
+    }
+}
+
+@mixin projects-category-summary {
+    .projects-category-short {
+        @include projects-category-summary-style(19px);
+        @include base.paragraph-100-light-auto;
+    }
+
+    .projects-category-tech {
+        @include projects-category-summary-style(16px);
+        @include base.font-family-primary;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 16px;
+        color: base.$font-color-secondary;
+    }
+}
+
+@mixin projects-category-label {
+    .projects-category-label {
+        @include base.header-200(base.$font-color-secondary, false);
+    }
+}
+
+@mixin projects-category-description {
+    .projects-category-description {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        flex-grow: 1;
+        padding: 0px;
+        @include base.flex-gap-column(16px);
+    }
+}
+
+// 1074 x 604
+
+@mixin image-size($target-width) {
+    $height-ratio: math.div(604, 1074);
+    box-sizing: border-box;
+    width: $target-width;
+    height: $target-width * $height-ratio;
+}
+
+@mixin projects-category-image($image-width) {
+    .projects-category-preview {
+        @include image-size($image-width);
+        flex-shrink: 0;
+        border: 1px solid base.$image-border-color;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+
+    .projects-category-image {
+        @include image-size($image-width);
+    }
+}
+
+@mixin projects-category-item($item-width, $direction) {
+    .projects-category-item {
+        box-sizing: border-box;
+        width: $item-width;
+        display: flex;
+        align-items: flex-start;
+        background-color: base.$surface-color-5;
+
+        @if $direction == row {
+            flex-direction: $direction;
+            @include base.flex-gap-row(20px);
+        } @else if $direction == column {
+            flex-direction: $direction;
+            @include base.flex-gap-column(8px);
+        }
+
+        &.text-type {
+            padding: 12px 12px 36px;
+        }
+
+        &.image-type {
+            @if $direction == row {
+                padding: 12px;
+            } @else if $direction == column {
+                padding: 12px 12px 36px;
+            }
+        }
+    }
+}
+
+@mixin projects-category-list($list-width) {
+    .projects-category-list {
+        width: $list-width;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0px;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
+
+        & > *:first-child {
+            border: 1px solid base.$background-color-5;
+        }
+
+        & > *:not(:first-child) {
+            border-width: 0px 1px 1px 1px;
+            border-style: solid;
+            border-color: base.$background-color-5;
+        }
+    }
+}
+
+@mixin projects-category-name {
+    .projects-category-name {
+        @include base.header-400-bold;
+        padding-left: 12px;
+    }
+}
+
+@mixin projects-category($category-width) {
+    .projects-category {
+        width: $category-width;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0px;
+        @include base.flex-gap-column(8px);
+    }
+}
+
+@mixin portfolio-main($top-gap) {
+    #projects-main {
+        padding: $top-gap 0px 0px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include base.flex-gap-column(32px);
+    }
+}
+
+// https://jsfiddle.net/e4wrofnv/
+
+@mixin portfolio-lists($screen-type) {
+    $top-gap: 72px;
+    $main-width: 839px;
+    $item-direction: row;
+    $image-width: 375px;
+
+    @if $screen-type == base.$desktop-small {
+        $main-width: 715px;
+        $image-width: 320px;
+    } @else if $screen-type == base.$mobile-normal {
+        $top-gap: 48px;
+        $main-width: 320px;
+        $item-direction: column;
+        $image-width: 296px;
+    } @else if $screen-type == base.$mobile-small {
+        $top-gap: 48px;
+        $main-width: 302px;
+        $item-direction: column;
+        $image-width: 278px;
+    }
+
+    @include portfolio-main($top-gap);
+    @include projects-category($main-width);
+    @include projects-category-name;
+    @include projects-category-list($main-width);
+    @include projects-category-item($main-width, $item-direction);
+    @include projects-category-image($image-width);
+    @include projects-category-description;
+    @include projects-category-label;
+    @include projects-category-summary;
+    @include projects-category-more;
+}

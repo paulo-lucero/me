@@ -1,0 +1,89 @@
+@use "base";
+
+@mixin contact-socials-link {
+    .contact-socials-link {
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        padding: 0px;
+        @include base.flex-gap-row(8px);
+
+        @include base.font-family-second;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 18px;
+        text-align: center;
+        color: base.$font-color-secondary;
+
+        &-icon {
+            height: 24px;
+        }
+    }
+}
+
+@mixin contact-socials-list {
+    #contact-socials-list {
+        max-width: 348px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0px;
+        @include base.flex-gap-row(32px);
+    }
+}
+
+@mixin contact-socials-header {
+    #contact-socials-header {
+        @include base.header-400(base.$font-color-secondary);
+    }
+}
+
+@mixin contact-socials {
+    #contact-socials {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px;
+        @include base.flex-gap-column(8px);
+    }
+}
+
+@mixin contact-mailto {
+    #contact-mailto {
+        @include base.header-400-bold;
+        text-decoration: none;
+    }
+}
+
+@mixin contact-email {
+    #contact-email {
+        padding: 0px;
+        @include base.header-400(base.$font-color-secondary);
+    }
+}
+
+@mixin contact-main {
+    #contact-main {
+        width: 100%;
+        min-width: 290px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 96px 16px 0px;
+        @include base.flex-gap-column(64px);
+    }
+}
+
+@mixin contact {
+    @include contact-main;
+    @include contact-email;
+    @include contact-mailto;
+    @include contact-socials;
+    @include contact-socials-header;
+    @include contact-socials-list;
+    @include contact-socials-link;
+}

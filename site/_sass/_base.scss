@@ -1,0 +1,172 @@
+// Color
+$background-color-5: #1F1F1F;
+$surface-color-5: #2A2A2A;
+$font-color-primary: #F5F5F5;
+$font-color-secondary: #C7C7C7;
+$image-border-color: rgba(18, 18, 18, 0.75);
+
+$line-height-primary: 1.5; // 150%
+
+// media
+$desktop-normal: desktop-normal;
+$desktop-small: desktop-small;
+$mobile-normal: mobile-normal;
+$mobile-small: mobile-small;
+
+// Shadow - Elevation
+@mixin surface-shadow {
+    // box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    // filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+@mixin mobile-nav-bar-shadow {
+    box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
+}
+@mixin mobile-nav-header-shadow {
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+// Fonts
+@mixin font-family-primary {
+    font-family: 'Roboto', sans-serif;
+}
+
+@mixin font-family-second {
+    font-family: 'Roboto Mono', monospace;
+}
+
+// Fonts Styles
+@mixin header-100 {
+    @include font-family-primary;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: $line-height-primary;
+    text-align: center;
+    color: $font-color-primary;
+}
+
+@mixin header-200($color: $font-color-primary, $is-centered: true) {
+    @include font-family-second;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: $line-height-primary;
+    color: $color;
+    @if $is-centered {
+        text-align: center;
+    }
+}
+
+@mixin header-300 {
+    @include font-family-primary;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: $line-height-primary;
+    color: $font-color-primary;
+}
+
+@mixin header-400($color: $font-color-primary) {
+    @include font-family-primary;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: $line-height-primary;
+    text-align: center;
+    color: $color;
+}
+
+@mixin header-400-bold($color: $font-color-primary) {
+    @include font-family-primary;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    color: $color;
+    line-height: $line-height-primary;
+    text-align: center;
+}
+
+@mixin header-400-bold-auto($is-centered: true) {
+    @include font-family-primary;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    color: $font-color-primary;
+    @if $is-centered {
+        text-align: center;
+    }
+}
+
+@mixin header-500 {
+    @include font-family-primary;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: $line-height-primary;
+    color: $font-color-primary;
+}
+
+@mixin paragraph-100-auto {
+    @include font-family-primary;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: $font-color-primary;
+}
+
+@mixin paragraph-100-light($is-centered: true) {
+    @include font-family-primary;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: $line-height-primary;
+    @if $is-centered {
+        text-align: center;
+    }
+    color: $font-color-secondary;
+}
+
+@mixin paragraph-100-light-auto {
+    @include font-family-primary;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    color: $font-color-secondary;
+}
+
+@mixin paragraph-200($color: $font-color-primary, $is-center: true) {
+    @include font-family-primary;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: $line-height-primary;
+    color: $color;
+    @if $is-center {
+        text-align: center;
+    }
+}
+
+@mixin paragraph-200-bold {
+    @include font-family-primary;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: $line-height-primary;
+    color: $font-color-primary;
+}
+
+@mixin flex-gap-column($gap) {
+    & > *:not(:first-child) {
+        margin-top: $gap;
+    }
+}
+
+@mixin flex-gap-row($gap) {
+    & > *:not(:first-child) {
+        margin-left: $gap;
+    }
+}

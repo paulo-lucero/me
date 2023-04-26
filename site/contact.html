@@ -1,0 +1,20 @@
+---
+layout: default
+title: Contact
+has_footer: False
+---
+{% assign contact_data = site.data.contact %}
+<div id="contact-main" dir="ltr">
+    <span id="contact-email">You may sent sent me an email to <a href="mailto:{{ contact_data.email }}" id="contact-mailto">{{ contact_data.email }}</a></span>
+    <span id="contact-socials">
+        <span id="contact-socials-header" >You can also find me at</span>
+        <span id="contact-socials-list" dir="ltr">
+            {% for social in contact_data.socials %}
+                <a href="{{ social.link }}" class="contact-socials-link" dir="ltr">
+                    <img src="{{ social.icon | relative_url }}" class="contact-socials-link-icon">
+                    <span>{{ social.name | upcase }}</span>
+                </a>
+            {% endfor %}
+        </span>
+    </span>
+</div>

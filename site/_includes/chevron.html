@@ -1,0 +1,7 @@
+{% assign chevron_left = "chevron-bar-left" %}
+{% assign chevron_right = "chevron-bar-right" %}
+{% assign chevron_wrapper = "chevron-icon-wrapper" %}
+<div id="{{ chevron_wrapper }}-{{ include.count }}" class="{{ chevron_wrapper }}">
+    <div id="{{ chevron_left }}-{{ include.count }}" class="{{ chevron_left }}"></div>
+    <div id="{{ chevron_right }}-{{ include.count }}" class="{{ chevron_right }}"></div>
+</div>

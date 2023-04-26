@@ -1,0 +1,8 @@
+<div class="{{ "portfolio-service-details-skills-item" | append: include.class }}">
+    <span class="portfolio-service-details-skills-item-heading" >{{ include.skillName }}</span>
+    <div class="portfolio-service-details-skills-item-tools">
+        {% for tool in include.tools %}
+            <span class="portfolio-service-details-skills-item-tool-name" >{{ tool | capitalize }}</span>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div id="mobile-nav-wrapper">
+    <div id="mobile-nav-bar" dir="ltr">
+        <div id="mobile-nav-header">
+            <div id="mobile-nav-icon" dir="ltr">
+                <div id="mobile-nav-icon-topbar"></div>
+                <div id="mobile-nav-icon-middlebar"></div>
+                <div id="mobile-nav-icon-bottombar"></div>
+            </div>
+            <div id="mobile-nav-headline">
+                {%- for item in site.data.navigation -%}
+                    {%- if page.url == item.link or include.type == item.name -%}
+                      {{ item.name | strip }}
+                    {%- endif -%}
+                {%- endfor -%}
+            </div>
+            <div id="mobile-nav-placeholder" ></div>
+        </div>
+        {% include nav-items.html id="mobile-nav-container" %}
+    </div> 
+</div>
+{% include nav-items.html id="desktop-nav-container" %}

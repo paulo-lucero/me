@@ -1,0 +1,87 @@
+@use "base";
+@use "about";
+@use "nav";
+@use "footer";
+@use "portfolio";
+@use "project";
+@use "contact";
+
+body {
+    background-color: base.$background-color-5;
+    margin: 0;
+}
+
+// navigation
+@media (min-width: 431px) {
+    @include nav.navigation-bar(base.$desktop-normal);
+}
+
+@media (max-width: 430px) {
+    @include nav.navigation-bar(base.$mobile-normal);
+}
+
+// footer
+@include footer.footer;
+
+// Welcome Message
+@media (min-width: 530px) {
+    @include about.welcome-variants(desktop);
+}
+
+@media (max-width: 529px) and (min-width: 390px) {
+    @include about.welcome-variants(mobile-normal);
+}
+
+@media (max-width: 389px) {
+    @include about.welcome-variants(mobile-small);
+}
+
+// Services
+@media (min-width: 744px) {
+    @include about.services-section(desktop-normal);
+}
+
+@media (max-width: 743px) and (min-width: 530px) {
+    @include about.services-section(desktop-small);
+}
+
+@media (max-width: 529px) and (min-width: 390px) {
+    @include about.services-section(mobile-normal);
+}
+
+@media (max-width: 389px) {
+    @include about.services-section(mobile-small);
+}
+
+// Portfolio
+@media (min-width: 860px) {
+    @include portfolio.portfolio-lists(base.$desktop-normal);
+}
+
+@media (max-width: 859px) and (min-width: 730px) {
+    @include portfolio.portfolio-lists(base.$desktop-small);
+}
+
+@media (max-width: 729px) and (min-width: 390px) {
+    @include portfolio.portfolio-lists(base.$mobile-normal);
+}
+
+@media (max-width: 389px) {
+    @include portfolio.portfolio-lists(base.$mobile-small);
+}
+
+// Project profile
+@media (min-width: 635px) {
+    @include project.project-styles(base.$desktop-small);
+}
+
+@media (max-width: 634px) and (min-width: 380px) {
+    @include project.project-styles(base.$mobile-normal);
+}
+
+@media (max-width: 379px) {
+    @include project.project-styles(base.$mobile-small);
+}
+
+// Contact
+@include contact.contact;

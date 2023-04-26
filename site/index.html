@@ -1,0 +1,18 @@
+---
+layout: default
+title: Paulo
+---
+<div id="about-main" >
+    <div id="welcome">
+        <span id="welcome-hi">Hi, I&apos;m Paulo</span>
+        <span id="welcome-message">A problem solver and inquisitive individual who is eager to collaborate with you</span>
+    </div>
+    <div id="portfolio-service" dir="ltr">
+        <span id="portfolio-service-heading" >Here's what I can do</span>
+        <div id="portfolio-service-list" dir="ltr">
+            {% for item in site.data.services %}
+                {% include service.html item=item count=forloop.index %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

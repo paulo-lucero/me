@@ -1,0 +1,13 @@
+---
+layout: default
+page_type: "Portfolio"
+---
+<div id="project-main" >
+    <div id="project-profile" dir="ltr">
+        {% assign project_image = page.image %}
+        {% if project_image %}
+            <div id="project-image-wrapper" ><img src="{{ project_image | relative_url }}" id="project-image" ></div>
+        {% endif %}
+        <div id="project-details" >{{ content }}</div>
+    </div>
+</div>

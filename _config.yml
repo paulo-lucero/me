@@ -1,0 +1,7 @@
+baseurl: /me
+source: site/
+destination: build/
+keep_files:
+  - assets/js
+markdown: CustomProcessor
+permalink: /:categories/:title:output_ext
