@@ -31,7 +31,7 @@
     - liquid
   - skillName: Developer Tools
     canDo:
-    - Node js
+    - Node.js
     - Jekyll
     - Git
     - npm
@@ -42,7 +42,7 @@
 - name: Desktop Apps
   description: Windows, linux apps
   skills:
-  - skillName: Language
+  - skillName: Languages
     canDo:
     - Javascript
     - CSS
@@ -54,13 +54,13 @@
     - Mui
   - skillName: Developer Tools
     canDo:
-    - Node js
+    - Node.js
     - Git
     - npm
   - skillName: Framework
     canDo:
     - Electron
-  - skillName: Design Tools
+  - skillName: Designing Tools
     canDo:
     - Figma
 
@@ -78,7 +78,7 @@
     - beautifulsoup
   - skillName: Developer Tools
     canDo:
-    - Node js
+    - Node.js
     - Git
     - npm
   - skillName: Framework
