@@ -20,7 +20,7 @@
     "start": "concurrently \"webpack --config webpack.dev.js\" \"bundle exec jekyll serve --drafts\"",
     "prebuild": "export JEKYLL_ENV=production || set JEKYLL_ENV=production",
     "build": "webpack --config webpack.prod.js && bundle exec jekyll build",
-    "serve:build": "npm run prebuild && concurrently \"webpack watch --config webpack.prod.js\" \"bundle exec jekyll serve\""
+    "serve-build": "npm run prebuild && concurrently \"webpack watch --config webpack.prod.js\" \"bundle exec jekyll serve\""
   },
   "browserslist": [
     "defaults"
