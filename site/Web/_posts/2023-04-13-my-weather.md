@@ -15,8 +15,8 @@ image: "/assets/images/projects/my-weather.jpg"
 
 - Uses the **OpenWeatherMap API** to provide the location, weather state, and temperature based on the visitor's coordinates.
 - Uses the **Geolocation API** to retrieve the visitor's location coordinates for the **OpenWeatherMap API**.
-- The displayed temperature unit can be change from celsious to fahrenheit or vice versa.
-- Weather data are reused if the visitor's location coordinates isn't changed and significant time has not yet passed.
+- The displayed temperature unit can be changed from Celsius to Fahrenheit or vice versa.
+- Weather data is reused if the visitor’s location coordinates haven’t changed and significant time has not yet passed.
 - Responsive design.
 
 # Tools used

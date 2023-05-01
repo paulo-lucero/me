@@ -13,9 +13,9 @@ image: "/assets/images/projects/random-quote.jpg"
 ---
 # Key points
 
-- The web app displayed one quote at a time, but it stores up to 10 quotes. The visitor can visit a previous quote or request a new one.
-- For touch screen devices, the quotes can be changed by swiping.
-- Can request a new quote/s or visit the previous ones during mid-animation, regardless of direction.
+- The web app displays one quote at a time, but it stores up to 10 quotes. The visitor can view a previous quote or request a new one.
+- For touch-screen devices, the quotes can be changed by swiping.
+- Can request a new quote or visit the previous ones during mid-animation, regardless of direction.
 - The quotes can be tweeted.
 - Built on the **Create React App** toolchain.
 - Responsive design.
