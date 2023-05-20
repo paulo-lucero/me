@@ -1,12 +1,9 @@
-{% assign wrapper_class = "portfolio-service-item-wrapper" %}
-{% assign item_class = "portfolio-service-item" %}
-{% assign menu_class = "portfolio-service-menu" %}
-<div id="{{ wrapper_class }}-{{ include.count }}" class="{{ wrapper_class }}" >
-    <div id="{{ item_class }}-{{ include.count }}" class="{{ item_class }}" dir="ltr">
-        <div id="{{ menu_class }}-{{ include.count }}" class="{{ menu_class }}" dir="ltr" >
-            <span class="portfolio-service-name" >{{ include.item.name }}</span>
-            {% include chevron.html count=include.count %}
-        </div>
-        {% include service-details.html description=include.item.description skills=include.item.skills %}
-    </div>
-</div>
+<ul id="portfolio-service-list" dir="ltr">
+    {% for item in site.data.services %}
+        {% assign item = item | strip %}
+        {% if forloop.last %}
+            {% assign item = item | append: " and more" %}
+        {% endif %}
+        <li>{{ item }}</li>
+    {% endfor %}
+</ul>

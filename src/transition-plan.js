@@ -1768,7 +1768,7 @@ export {
   TransitionPlan
 };
 
-// create github repo
+// create github repo and npm package
 //   two point concept
 //   responsive
 

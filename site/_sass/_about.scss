@@ -65,314 +65,49 @@
     }
 }
 
-// chevron
-@mixin chevron-bar-style($y-offset, $degree) {
-    transform-origin: $y-offset center;
-    transform: rotate($degree);
-}
-
-@mixin chevron-bar($bar-type, $wrapper-size) {
-    $bar-width: 16px;
-    $bar-height: 2px;
-    $bar-height-offset: math.div($bar-height, 2);
-    $bar-position: math.div($wrapper-size, 2) - $bar-height-offset;
-    $bar-degree: 45deg;
-    $bar-center-offset: math.div($wrapper-size - (($bar-width + $bar-height-offset) * math.cos($bar-degree)), 2); // opened
-
-    position: absolute;
-    background-color: base.$font-color-primary;
-    border-radius: 50px;
-    width: $bar-width;
-    height: $bar-height;
-    top: $wrapper-size - $bar-center-offset - $bar-height;
-
-    @if $bar-type == left {
-        right: $bar-position;
-        @include chevron-bar-style($bar-width - $bar-height-offset, $bar-degree);
-    } @else {
-        left: $bar-position;
-        @include chevron-bar-style($bar-height-offset, $bar-degree * -1);
-    }
-}
-
-// details (list of skills)
-@mixin flex-column {
-    display: flex;
-    flex-direction: column;
-}
-
-@mixin flex-gap($gap) {
-    & > *:not(:first-child) {
-        margin-top: $gap;
-    }
-}
-
-@mixin details-wrapper {
-    .portfolio-service-details {
-        box-sizing: border-box;
-        @include flex-column;
-        align-items: center;
-        padding: 32px 0px 8px;
-        background-color: base.$surface-color-5;
-        border-width: 1px 0px 0px;
-        border-style: solid;
-        border-color: base.$background-color-5;
-
-        @include flex-gap(32px);
-    } 
-}
-
-@mixin details-description {
-    .portfolio-service-details-description {
-        @include base.paragraph-200(base.$font-color-secondary);
-    }
-}
-
-@mixin details-hr($width) {
-    .portfolio-service-details-line {
-        width: $width;
-        height: 0px;
-        background: base.$background-color-5;
-        border: 2px solid base.$background-color-5;
-    }
-}
-
-@mixin details-skills-section($width) {
-    .portfolio-service-details-skills {
-        @include flex-column;
-        align-items: center;
-        padding: 0px;
-        width: $width;
-
-        @include flex-gap(18px);
-    }
-}
-
-@mixin details-skills-heading {
-    .portfolio-service-details-skills-heading {
-        @include base.header-200;
-    }
-}
-
-@mixin details-skills-item-centered($no) {
-    $no: $no - 1;
-    @for $i from 1 through $no {
-        &.skills-no-#{$i} {
-            justify-content: center;
-        }
-    }
-}
-
-@mixin details-skills-wrapper($width, $no) {
-    .portfolio-service-details-skills-wrapper {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        padding: 0px;
-        width: $width;
-
-        @include details-skills-item-centered($no);
-    }
-}
-
-@mixin details-skills-item-gap($no, $col-gap, $row-gap) {
-    .item-col-gap-#{$no}-col {
-        margin-top: $col-gap;
-    }
-
-    .item-row-gap-#{$no}-col {
-        margin-left: $row-gap;
-    }
-}
-
-@mixin details-skills-item {
-    .portfolio-service-details-skills-item {
-        @include flex-column;
-        align-items: stretch;
-        padding: 0px;
-        width: 104px;
-
-        @include flex-gap(8px);
-    }
-
-    .portfolio-service-details-skills-item-heading {
-        @include base.header-100;
-        overflow-wrap: break-word;
-    }
-
-    .portfolio-service-details-skills-item-tools {
-        @include flex-column;
-        align-items: center;
-        padding: 0px;
-
-        @include flex-gap(6px);
-    }
-
-    .portfolio-service-details-skills-item-tool-name {
-        @include base.paragraph-100-light;
-        overflow-wrap: break-word;
-    }
-}
-
-@mixin details-section($type) {
-    $hr-width: 572px;
-    $default-mobile-skill-container-width: 230px;
-    $skill-container-width: 512px;
-    $default-mobile-col-no: 2;
-    $column-no: 4;
-    $default-mobile-row-gap: 22px;
-    $row-gap: 32px;
-
-    @if $type == base.$desktop-small {
-        $hr-width: 436px;
-        $skill-container-width: 360px;
-        $column-no: 3;
-        $row-gap: 24px;
-    } @else if $type == base.$mobile-normal {
-        $hr-width: 295px;
-        $skill-container-width: $default-mobile-skill-container-width;
-        $column-no: $default-mobile-col-no;
-        $row-gap: $default-mobile-row-gap;
-    } @else if $type == base.$mobile-small {
-        $hr-width: 222px;
-        $skill-container-width: $default-mobile-skill-container-width;
-        $column-no: $default-mobile-col-no;
-        $row-gap: $default-mobile-row-gap;
-    }
-
-    @include details-wrapper;
-    @include details-description;
-    @include details-hr($hr-width);
-    @include details-skills-section($skill-container-width);
-    @include details-skills-heading;
-    @include details-skills-wrapper($skill-container-width, $column-no);
-    @include details-skills-item-gap($column-no, 16px, $row-gap);
-    @include details-skills-item;
-}
-
 // services
-@mixin service-heading($type) {
-    #portfolio-service-heading {
-        @if $type == base.$mobile-small {
-            @include base.header-300;
-        } @else {
-            @include base.header-400;
-        }
+@mixin service-container {
+    #portfolio-service {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px;
+        @include base.flex-gap-column(18px);
     }
 }
 
-@mixin service-item-name($type) {
-    .portfolio-service-name {
-        @if $type == base.$desktop-normal or $type == base.$desktop-small {
-            @include base.header-500;
-        } @else if $type == base.$mobile-normal {
-            @include base.header-400;
-        } @else {
-            @include base.header-300;
+@mixin service-heading {
+    #portfolio-service-heading {
+        @include base.header-300;
+    }
+}
+
+@mixin service-list {
+    #portfolio-service-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px;
+        list-style-type: none;
+        min-width: 320px;
+        box-sizing: border-box;
+        @include base.flex-gap-column(12px);
+
+        li {
+            @include base.font-family-second;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 26px;
+            color: base.$font-color-secondary;
         }
     }
 }
 
 @mixin services-section($type) {
     @include about-body($type);
-
-    $service-item-width: 652px;
-    $service-item-height: 80px;
-
-    @if $type == base.$desktop-small {
-        $service-item-width: 516px;
-    } @else if $type == base.$mobile-normal {
-        $service-item-width: 375px;
-        $service-item-height: 68px;
-    } @else if $type == base.$mobile-small {
-        $service-item-width: 302px;
-        $service-item-height: 65px;
-    }
-
-    #portfolio-service {
-        width: $service-item-width;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0px;
-    }
-
-    @include service-heading($type);
-
-    #portfolio-service-list {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 0px;
-        width: $service-item-width;
-        @include base.surface-shadow;
-        margin-top: 8px;
-    }
-
-    .portfolio-service-item-wrapper {
-        width: $service-item-width;
-        height: $service-item-height;
-        overflow: hidden;
-
-        &:first-child {
-            border: 1px solid base.$background-color-5;
-        }
-
-        &:not(:first-child) {
-            border-width: 0px 1px 1px 1px;
-            border-style: solid;
-            border-color: base.$background-color-5;
-        }
-    }
-
-    .portfolio-service-item {
-        width: $service-item-width;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: stretch;
-        padding: 0px;
-        background-color: base.$surface-color-5;
-    }
-
-    .portfolio-service-menu {
-        box-sizing: border-box;
-        height: $service-item-height;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 16px;
-    }
-
-    @include service-item-name($type);
-
-    .chevron {
-        // closed: https://jsfiddle.net/hvdpw2bL/5/
-        // opened: https://jsfiddle.net/hvdpw2bL/3/
-    
-        $wrapper-size: 20px;
-    
-        &-icon-wrapper {
-            position: relative;
-            width: $wrapper-size;
-            height: $wrapper-size;
-            // margin: 5px 5px;
-            // border: 0.5px solid black;
-        }
-    
-        &-bar-left {
-            @include chevron-bar(left, $wrapper-size);
-        }
-    
-        &-bar-right {
-            @include chevron-bar(right, $wrapper-size);
-        }
-    }
-
-    @include details-section($type);
+    @include welcome-variants($type);
+    @include service-container;
+    @include service-heading;
+    @include service-list;
 }
